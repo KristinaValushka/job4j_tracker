@@ -4,6 +4,8 @@ public class Item {
     private int id;
     private String name;
 
+
+
     public int getId() {
         return id;
     }
@@ -12,7 +14,7 @@ public class Item {
         this.id = id;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
