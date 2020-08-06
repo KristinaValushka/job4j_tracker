@@ -13,18 +13,7 @@ public class Tracker {
     }
 
     public Item[] findAll() {
-        Item[] itemsWithoutNull = new Item[items.length];
-         int size = 0;
-        for (int i = 0; i < items.length; i++) {
-            if (items[i] != null) {
-                itemsWithoutNull[size] = items[i];
-                size++;
-            }
-        }
-        itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, size);
-        for (int index = 0; index < itemsWithoutNull.length; index++) {
-            System.out.println(itemsWithoutNull[index]);
-        }
+        Item[] itemsWithoutNull = Arrays.copyOf(items, size);
         return itemsWithoutNull;
     }
 
