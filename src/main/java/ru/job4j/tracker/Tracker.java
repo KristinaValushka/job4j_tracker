@@ -53,7 +53,7 @@ public class Tracker {
             item.setId(id);
             items[index] = item;
 
-        } return rsl;
+        } return index != - 1;
     }
 
     private int indexOf(int id) {
