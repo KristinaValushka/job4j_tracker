@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 import java.util.Arrays;
 
 public class Tracker {
-    private final Item[] items = new Item[100];
+    private static final Item[] items = new Item[100];
     private int ids = 1;
     private int size = 0;
 
@@ -12,8 +12,8 @@ public class Tracker {
         return item;
     }
 
-    public Item[] findAll() {
-        Item[] itemsWithoutNull = Arrays.copyOf(items, size);
+    public static Item[] findAll() {
+        Item[] itemsWithoutNull = Arrays.copyOf(items, this.size);
         return itemsWithoutNull;
     }
 
@@ -21,7 +21,6 @@ public class Tracker {
         Item[] itemsName = new Item[this.size];
         int size = 0;
         for (int i = 0; i < this.size; i++) {
-
         if (items[i].getName().equals(key); {
                 itemsName[size] = items[i];
                 size++;
@@ -30,12 +29,12 @@ public class Tracker {
         return Arrays.copyOf(itemsName, size);
     }
 
-    public Item findById(int id) {
+    public static Item findById(int id) {
         int index = indexOf(id);
         return index != -1 ? items[index] : null;
     }
 
-    public boolean replace(int id, Item item) {
+    public static boolean replace(int id, Item item) {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
@@ -45,9 +44,9 @@ public class Tracker {
         } return index != - 1;
     }
 
-    private int indexOf(int id) {
+    private static int indexOf(int id) {
         int rsl = -1;
-        for (int index = 0; index < size; index++) {
+        for (int index = 0; index < this.size; index++) {
             if (items[index].getId() == id) {
                 rsl = index;
                 break;
@@ -56,12 +55,12 @@ public class Tracker {
         return rsl;
     }
 
-    public boolean delete(int id) {
+    public static boolean delete(int id) {
         int index = indexOf(id);
         if (index != -1) {
             System.arraycopy(items, index + 1, items, index, size - index);
-            items[size - 1] = null;
-            size--;
+            items[this.size - 1] = null;
+            this.size--;
         }
         boolean rsl = index != -1;
         if (rsl) {
