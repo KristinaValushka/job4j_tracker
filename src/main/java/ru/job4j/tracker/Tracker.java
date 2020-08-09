@@ -12,7 +12,7 @@ public class Tracker {
         return item;
     }
 
-    public static Item[] findAll() {
+    public Item[] findAll() {
         Item[] itemsWithoutNull = Arrays.copyOf(items, this.size);
         return itemsWithoutNull;
     }
@@ -29,12 +29,12 @@ public class Tracker {
         return Arrays.copyOf(itemsName, size);
     }
 
-    public static Item findById(int id) {
+    public Item findById(int id) {
         int index = indexOf(id);
         return index != -1 ? items[index] : null;
     }
 
-    public static boolean replace(int id, Item item) {
+    public boolean replace(int id, Item item) {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
@@ -44,7 +44,7 @@ public class Tracker {
         } return index != - 1;
     }
 
-    private static int indexOf(int id) {
+    private int indexOf(int id) {
         int rsl = -1;
         for (int index = 0; index < this.size; index++) {
             if (items[index].getId() == id) {
@@ -55,17 +55,15 @@ public class Tracker {
         return rsl;
     }
 
-    public static boolean delete(int id) {
+    public boolean delete(int id) {
         int index = indexOf(id);
-        if (index != -1) {
-            System.arraycopy(items, index + 1, items, index, size - index);
+        boolean rsl = index != -1;
+        if (rsl) {
+            System.arraycopy(items, index + 1, items, index, this.size - index);
             items[this.size - 1] = null;
             this.size--;
         }
-        boolean rsl = index != -1;
-        if (rsl) {
-
-        } return true;
+        return rsl;
     }
 
     public static void main(String[] args) {

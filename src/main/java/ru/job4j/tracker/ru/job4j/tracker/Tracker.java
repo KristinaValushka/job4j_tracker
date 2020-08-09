@@ -19,26 +19,34 @@ public class StartUI {
                 String name = scanner.nextLine();
                 Item item = new Item(name);
                 tracker.add(item);
+
             } else if (select == 1) {
                 System.out.println("=== All item ===");
                 Item[] foundAll = Tracker.findAll();
-                System.out.println(foundAll);
+                for (int i = 0; i < foundAll.length; i++) {
+                   System.out.println(foundAll[i]);
+                }
+
+
             } else if (select == 2) {
                 System.out.println("=== Editing item ===");
+                int name = Integer.valueOf(scanner.nextLine());
+                Item items = new Item(name);
                 int id = Integer.valueOf(scanner.nextLine());
-                int item = Integer.valueOf(scanner.nextLine());
-                boolean replace = Tracker.replace(id, item);
+                boolean replace = Tracker.replace(id, items);
+
                 if (replace) {
                     System.out.println("Операция выполнена успешно");
                 } else {
                     System.out.println("Не удалось заменить существующий элемент");
                 }
+
                 } else if (select == 3) {
                 System.out.println("=== Deletion item ===");
                 int id = Integer.valueOf(scanner.nextLine());
                 boolean deleteItem = Tracker.delete(id);
                 if (deleteItem) {
-                    System.out.println("Операция выполнена успешно");
+                    System.out.println("Операция выполнена успешно " + deleteItem + " удлаен");
                 } else {
                     System.out.println("Не удалось удалить существующий элемент");
                 }
@@ -46,12 +54,26 @@ public class StartUI {
                 System.out.println("=== Found item by Id ===");
                 int id = Integer.valueOf(scanner.nextLine());
                 Item founId = Tracker.findById(id);
-                System.out.println(founId);
+                if (founId != null) {
+                    System.out.println("Операция выполнена успешно " + founId + " найденная заявка");
+                } else {
+                    System.out.println("Не удалось найти заявку по ID");
+                }
+
+
             } else if (select == 5) {
                 System.out.println("=== Found item by name");
                 String key = scanner.nextLine();
-                String foundName = Tracker.findByName(key);
-                System.out.println(foundName);
+                Item[] foundName = Tracker.findByName(key);
+                for (int i = 0; i < foundName.length; i++) {
+                    if (foundName != null) {
+                        System.out.println("Операция выполнена успешно " + foundName[i] + "найденное имя");
+                    } else {
+                        System.out.println("Не удалось найти существующую заявку");
+                    }
+                    System.out.println(foundName[i]);
+                }
+
             } else if (select == 6) {
                 run = false;
             }
