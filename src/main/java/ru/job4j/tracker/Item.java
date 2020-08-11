@@ -9,6 +9,10 @@ public class Item {
         this.name = name;
     }
 
+    public Item() {
+        return;
+    }
+
     public int getId() {
         return id;
     }
