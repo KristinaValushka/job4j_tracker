@@ -36,8 +36,8 @@ public class StartUITest {
         Item item = new Item("del item");
         tracker.add(item);            // теперь у нас есть id
         int answer = item.getId();
-        StartUI.deleteItem(answer);
+        StartUI.deleteItem(new StubInput(answer), tracker);
         Item replaced = tracker.findById(item.getId());
-        assertThat(replaced.getName(), is("null");
+        assertThat(replaced.getName(), is("null"));
     }
 }

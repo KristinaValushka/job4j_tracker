@@ -21,7 +21,7 @@ public class Tracker {
         Item[] itemsName = new Item[this.size];
         int size = 0;
         for (int i = 0; i < this.size; i++) {
-        if (items[i].getName().equals(key); {
+        if (items[i].getName().equals(key)); {
                 itemsName[size] = items[i];
                 size++;
             }
