@@ -1,9 +1,4 @@
-package ru.job4j.tracker.ru.job4j.tracker;
-
-import ru.job4j.tracker.ConsoleInput;
-import ru.job4j.tracker.Input;
-import ru.job4j.tracker.Item;
-import ru.job4j.tracker.Tracker;
+package ru.job4j.tracker;
 
 public class StartUI {
 
@@ -22,7 +17,7 @@ public class StartUI {
     }
     public static void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Editing item ===");
-        int name = Integer.valueOf(input.askStr("Enter name: "));
+        String name = input.askStr("Enter name: ");
         Item items = new Item(name);
         int id = Integer.valueOf(input.askStr("Enter id: "));
         boolean replace = tracker.replace(id, items);
@@ -56,15 +51,13 @@ public class StartUI {
         System.out.println("=== Found item by name");
         String key = input.askStr("Enter key: ");
         Item[] foundName = tracker.findByName(key);
+        if(foundName.length > 0) {} else {}
         for (int i = 0; i < foundName.length; i++) {
-            if (foundName != null) {
-                System.out.println("Операция выполнена успешно " + foundName[i] + "найденное имя");
-            } else {
-                System.out.println("Не удалось найти существующую заявку");
+             System.out.println("Операция выполнена успешно " + foundName[i] + "найденное имя");
             }
-            System.out.println(foundName[i]);
+          System.out.println("Не удалось найти существующую заявку");
         }
-    }
+
     public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {

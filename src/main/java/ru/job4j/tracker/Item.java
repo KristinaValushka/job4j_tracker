@@ -5,8 +5,9 @@ public class Item {
     private int id;
     private static String name;
 
-
-
+    public Item(String name) {
+        this.name = name;
+    }
 
     public int getId() {
         return id;
