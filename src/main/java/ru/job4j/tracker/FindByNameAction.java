@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public class FindByNameItem implements UserAction{
+public class FindByNameAction implements UserAction{
     @Override
     public String name() {
         return "=== Found item by name";
