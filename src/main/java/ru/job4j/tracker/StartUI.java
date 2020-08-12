@@ -51,9 +51,9 @@ public class StartUI {
         System.out.println("=== Found item by name");
         String key = input.askStr("Enter key: ");
         Item[] foundName = tracker.findByName(key);
-        if (foundName.length > 0) {
+        if(foundName.length > 0) {
             for (int i = 0; i < foundName.length; i++) {
-                System.out.println(foundName[i]);
+                System.out.println("Операция выполнена успешно " + foundName[i] + "найденное имя");
             }
         } else {
             System.out.println("Не удалось найти существующую заявку");
