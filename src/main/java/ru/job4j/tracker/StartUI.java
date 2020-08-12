@@ -18,8 +18,8 @@ public class StartUI {
     public static void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Editing item ===");
         String name = input.askStr("Enter name: ");
-        Item items = new Item(name);
         int id = Integer.valueOf(input.askStr("Enter id: "));
+        Item items = new Item(name);
         boolean replace = tracker.replace(id, items);
         if (replace) {
             System.out.println("Операция выполнена успешно");
@@ -37,7 +37,7 @@ public class StartUI {
             System.out.println("Не удалось удалить существующий элемент");
         }
     }
-    public static void findByIdItem(Input input, Tracker tracker) {
+    public static void findById(Input input, Tracker tracker) {
         System.out.println("=== Found item by Id ===");
         int id = Integer.valueOf(input.askStr("Enter id: "));
         Item founId = tracker.findById(id);
@@ -47,16 +47,18 @@ public class StartUI {
             System.out.println("Не удалось найти заявку по ID");
         }
     }
-    public static void findByNameItem(Input input, Tracker tracker) {
+    public static void findByName(Input input, Tracker tracker) {
         System.out.println("=== Found item by name");
         String key = input.askStr("Enter key: ");
         Item[] foundName = tracker.findByName(key);
-        if(foundName.length > 0) {} else {}
-        for (int i = 0; i < foundName.length; i++) {
-             System.out.println("Операция выполнена успешно " + foundName[i] + "найденное имя");
+        if (foundName.length > 0) {
+            for (int i = 0; i < foundName.length; i++) {
+                System.out.println(foundName[i]);
             }
-          System.out.println("Не удалось найти существующую заявку");
+        } else {
+            System.out.println("Не удалось найти существующую заявку");
         }
+    }
 
     public void init(Input input, Tracker tracker, UserAction[] actions) {
         boolean run = true;
