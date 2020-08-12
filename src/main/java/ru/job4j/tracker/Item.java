@@ -3,14 +3,14 @@ package ru.job4j.tracker;
 public class Item {
 
     private int id;
-    private static String name;
+    private String name;
 
     public Item(String name) {
         this.name = name;
     }
 
     public Item() {
-        return;
+
     }
 
     public int getId() {
@@ -21,7 +21,7 @@ public class Item {
         this.id = id;
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 
