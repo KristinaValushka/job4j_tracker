@@ -1,7 +1,7 @@
 package ru.job4j.tracker;
 
 public class StartUI {
-
+    // все статические методы нам уже не нужны, можно убирать
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         String name = input.askStr("Enter name: ");
@@ -70,16 +70,16 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
-            int select = input.askInt("Select: ");
+            int select = input.askInt("Select: "); // вот у нас input - значит мы ему должны дать значение
             UserAction action = actions[select];
             run = action.execute(input, tracker);
         }
     }
 
     private void showMenu(UserAction[] actions) {
-        System.out.println("Menu.");
+        out.println("Menu.");
         for (int index = 0; index < actions.length; index++) {
-            System.out.println(index + ". " + actions[index].name());
+            out.println(index + ". " + actions[index].name());
         }
     }
 
@@ -92,9 +92,9 @@ public class StartUI {
                 new SearchAllAction(),
                 new ReplaceAction(),
                 new DeleteAction(),
-                new FindByIdAction(),
-                new FindByNameAction(),
-                new ExitAction()
+                new FindByIdAction(output),
+                new FindByNameAction(output),
+                new ExitAction(output)
 
         };
         new StartUI(output).init(input, tracker, actions);
