@@ -1,6 +1,12 @@
 package ru.job4j.tracker;
 
 public class ReplaceAction implements UserAction{
+    private Output out;
+
+    public ReplaceAction(Output out) {
+        this.out = out;
+    }
+
     @Override
     public String name() {
         return "=== Editing item ===";
@@ -13,9 +19,9 @@ public class ReplaceAction implements UserAction{
         int id = Integer.valueOf(input.askStr("Enter id: "));
         boolean replace = tracker.replace(id, items);
         if (replace) {
-            System.out.println("Операция выполнена успешно");
+            out.println("Операция выполнена успешно");
         } else {
-            System.out.println("Не удалось заменить существующий элемент");
+            out.println("Не удалось заменить существующий элемент");
         }return true;
     }
 }

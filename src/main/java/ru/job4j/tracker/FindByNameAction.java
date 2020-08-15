@@ -19,7 +19,7 @@ public class FindByNameAction implements UserAction{
         Item[] foundName = tracker.findByName(key);
         if(foundName.length > 0) {
             for (int i = 0; i < foundName.length; i++) {
-                out.println("Операция выполнена успешно " + foundName[i] + "найденное имя");
+                out.println("Операция выполнена успешно " + foundName[i]);
             }
         } else {
             out.println("Не удалось найти существующую заявку");

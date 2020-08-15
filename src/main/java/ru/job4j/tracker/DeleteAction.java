@@ -1,6 +1,13 @@
 package ru.job4j.tracker;
 
 public class DeleteAction implements UserAction {
+
+    private final Output out;
+
+    public DeleteAction(Output out) {
+        this.out = out;
+    }
+
     @Override
     public String name() {
         return "=== Deletion item ===";
@@ -11,9 +18,9 @@ public class DeleteAction implements UserAction {
         int id = Integer.valueOf(input.askStr("Enter id: "));
         boolean deleteItem = tracker.delete(id);
         if (deleteItem) {
-            System.out.println("Операция выполнена успешно " + deleteItem + " удлаен");
+            out.println("Операция выполнена успешно " + deleteItem + " удлаен");
         } else {
-            System.out.println("Не удалось удалить существующий элемент");
+            out.println("Не удалось удалить существующий элемент");
         }
         return true;
     }

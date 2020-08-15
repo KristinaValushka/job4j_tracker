@@ -37,7 +37,7 @@ public class StartUITest {
                 new String[] {"0", replacedName, "1", "1"}
         );
         UserAction[] actions = {
-                new ReplaceAction(),
+                new ReplaceAction(out),
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
@@ -54,7 +54,7 @@ public class StartUITest {
                 new String[] {"0", "1", "1"}
         );
         UserAction[] actions = {
-                new DeleteAction(),
+                new DeleteAction(out),
                 new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
@@ -78,7 +78,7 @@ public class StartUITest {
                         "0. == Exit ==" + LN
         ));
     }
-
+    @Test
     public void testSearchAll() {
         Output out = new StubOutput();
         Input in = new StubInput(
@@ -86,12 +86,11 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new SearchAllAction()
+                new SearchAllAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                         "" + System.lineSeparator()
+                "Menu." + LN + "0. === All item ===" + LN + "1. == Exit ==" + LN
         ));
     }
     @Test
@@ -115,16 +114,19 @@ public class StartUITest {
                 + "1. == Exit ==" + LN;
         assertThat(out.toString(), is(expected));
     }
-
+    @Test
     public void testFindByName() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "3"}
+                new String[] {"0", "1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new FindByNameAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
+        String expected = "Menu." + LN +  "0. === Found item by name" + LN
+                + "Операция выполнена успешно " + LN;
+        assertThat(out.toString(), is(expected));
     }
 }
