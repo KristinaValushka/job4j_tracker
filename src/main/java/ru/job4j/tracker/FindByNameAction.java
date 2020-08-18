@@ -10,7 +10,7 @@ public class FindByNameAction implements UserAction{
 
     @Override
     public String name() {
-        return "=== Found item by name";
+        return "=== Found item by name ===";
     }
 
     @Override
@@ -22,7 +22,7 @@ public class FindByNameAction implements UserAction{
                 out.println("Операция выполнена успешно " + foundName[i]);
             }
         } else {
-            out.println("Не удалось найти существующую заявку");
+            out.println("Не удалось найти существующую заявку ");
         }
         return true;
     }

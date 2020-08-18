@@ -86,11 +86,13 @@ public class StartUITest {
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new SearchAllAction(out)
+                new SearchAllAction(out),
+                new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
                 "Menu." + LN + "0. === All item ===" + LN + "1. == Exit ==" + LN
+                        + "Menu." + LN + "0. === All item ===" + LN + "1. == Exit ==" + LN
         ));
     }
     @Test
@@ -118,15 +120,18 @@ public class StartUITest {
     public void testFindByName() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "1"}
+                new String[] {"0","1","1"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new FindByNameAction(out)
+                new FindByNameAction(out),
+                new ExitAction(out)
         };
         new StartUI(out).init(in, tracker, actions);
-        String expected = "Menu." + LN +  "0. === Found item by name" + LN
-                + "Операция выполнена успешно " + LN;
+        String expected = "Menu." + LN +  "0. === Found item by name ===" + LN
+                + "1. == Exit ==" + LN + "Не удалось найти существующую заявку "
+                + LN + "Menu." + LN +  "0. === Found item by name ==="
+                + LN + "1. == Exit ==" + LN;
         assertThat(out.toString(), is(expected));
     }
 }
