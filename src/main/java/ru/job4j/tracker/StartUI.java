@@ -86,7 +86,6 @@ public class StartUI {
             out.println(index + ". " + actions[index].name());
         }
     }
-
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
         Input input = new ConsoleInput();
