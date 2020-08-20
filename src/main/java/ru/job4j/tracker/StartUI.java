@@ -1,7 +1,7 @@
 package ru.job4j.tracker;
 
 public class StartUI {
-    // все статические методы нам уже не нужны, можно убирать
+
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
         String name = input.askStr("Enter name: ");
@@ -18,7 +18,7 @@ public class StartUI {
     public static void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Editing item ===");
         String name = input.askStr("Enter name: ");
-        int id = Integer.valueOf(input.askStr("Enter id: "));
+        int id = Integer.parseInt(input.askStr("Enter id: "));
         Item items = new Item(name);
         boolean replace = tracker.replace(id, items);
         if (replace) {
@@ -29,7 +29,7 @@ public class StartUI {
     }
     public static void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Deletion item ===");
-        int id = Integer.valueOf(input.askStr("Enter id: "));
+        int id = Integer.parseInt(input.askStr("Enter id: "));
         boolean deleteItem = tracker.delete(id);
         if (deleteItem) {
             System.out.println("Операция выполнена успешно " + deleteItem + " удлаен");
@@ -39,7 +39,7 @@ public class StartUI {
     }
     public static void findById(Input input, Tracker tracker) {
         System.out.println("=== Found item by Id ===");
-        int id = Integer.valueOf(input.askStr("Enter id: "));
+        int id = Integer.parseInt(input.askStr("Enter id: "));
         Item founId = tracker.findById(id);
         if (founId != null) {
             System.out.println("Операция выполнена успешно " + founId + " найденная заявка");
@@ -86,9 +86,10 @@ public class StartUI {
             out.println(index + ". " + actions[index].name());
         }
     }
+
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput(output, new ConsoleInput());
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(output),
@@ -98,7 +99,6 @@ public class StartUI {
                 new FindByIdAction(output),
                 new FindByNameAction(output),
                 new ExitAction(output)
-
         };
         new StartUI(output).init(input, tracker, actions);
         }
