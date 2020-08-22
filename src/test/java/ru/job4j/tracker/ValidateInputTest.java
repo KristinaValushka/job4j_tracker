@@ -18,7 +18,6 @@ public class ValidateInputTest {
         assertThat(selected, is(1));
     }
 
-
     @Test
     public void whenValidInput() {
         Output out = new StubOutput();
@@ -32,12 +31,12 @@ public class ValidateInputTest {
 
     @Test
     public void whenValidOutput() {
-        Input in = new StubInput();
-        Output out = new StubOutput(
-                new int[] {null, 1}
+        Output out = new StubOutput();
+        Input in = new StubInput(
+                new String[] {"1", "1"}
         );
-        ValidateInput input = new ValidateInput(out, in);
-        int selected = input.askInt("Enter menu:");
+        ValidateInput out = new ValidateInput(out, in);
+        String selected = out.askStr("Please enter validate data again.");
         assertThat(selected, is(1));
     }
 }
