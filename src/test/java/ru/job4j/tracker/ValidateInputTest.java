@@ -30,13 +30,14 @@ public class ValidateInputTest {
     }
 
     @Test
-    public void whenValidOutput() {
+    public void whenInvalidOutput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"1", "1"}
+                new String[] {"one", "1"}
         );
-        ValidateInput out = new ValidateInput(out, in);
-        String selected = out.askStr("Please enter validate data again.");
-        assertThat(selected, is(1));
+        ValidateInput input = new ValidateInput(out, in); // создаем объект который будет проверять пользовательский ввод
+        int selected = input.askInt("Enter menu:"); // вызываем метод, который потенциально может бросить исключение
+        String expected = "Please enter validate data again." + System.lineSeparator(); // строка, которая будет содержаться в output
+        assertThat(out.toString(), is(expected));
     }
 }
