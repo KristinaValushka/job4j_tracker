@@ -33,20 +33,13 @@ public class Person {
 
 
     public static void main(String[] args) {
-        ArrayList<String> person = new ArrayList<>();
-        person.add("Petr");
-        person.add("Arsentev");
-        person.add("534872");
-        person.add("Bryansk");
+        ArrayList<Person> person = new ArrayList<>();
+        Person idperson = new Person("Petr", "Arsentev", "534872", "Bryansk");
 
-        for (int i = 0; i < person.size(); i++) {
-            boolean key = person.contains("Petr");
-            if (key == true) {
-                System.out.println("element Petr is contained in the list");
-            } else {
-                System.out.println("element Petr is not contained in the list");
+        person.add(idperson);
 
-            }
-        }
+
     }
+
+
 }
