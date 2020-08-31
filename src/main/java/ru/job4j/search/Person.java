@@ -31,15 +31,4 @@ public class Person {
         return address;
     }
 
-
-    public static void main(String[] args) {
-        ArrayList<Person> person = new ArrayList<>();
-        Person idperson = new Person("Petr", "Arsentev", "534872", "Bryansk");
-
-        person.add(idperson);
-
-
     }
-
-
-}
