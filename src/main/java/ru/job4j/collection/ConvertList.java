@@ -16,7 +16,6 @@ public class ConvertList {
         return rsl;
     }
 
-
     public static void main(String[] args) {
         List<int[]> in = new ArrayList<>();
         in.add(new int[] {1});
