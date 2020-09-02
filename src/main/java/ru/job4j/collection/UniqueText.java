@@ -12,9 +12,11 @@ public class UniqueText {
             check.add(or);
         }
         for (String tx = text) {
-           rsl = check.contains(tx);
+            rsl = check.contains(tx);
+            if (!rsl) {
+                break;
+            }
         }
-
-        return rsl;
+           return rsl;
     }
 }
