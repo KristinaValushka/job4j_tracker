@@ -21,8 +21,8 @@ public class Tracker {
         return itemsWithoutNull;
     }
 
-    public Item[] findByName(String key) {
-        Item[] itemsName = new Item[this.size];
+    public List<Item> findByName(String key) {
+        List<Item> itemsName = new Item[this.size];
         int size = 0;
         for (int i = 0; i < this.size; i++) {
         if (items.get(i).getName().equals(key)); {
