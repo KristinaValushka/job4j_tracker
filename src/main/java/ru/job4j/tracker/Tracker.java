@@ -17,7 +17,7 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        List<Item> itemsWithoutNull = Arrays.copyOf(new List<Item> items, this.size);
+        List<Item> itemsWithoutNull = Arrays.copyOf(items, this.size);
         return itemsWithoutNull;
     }
 
@@ -43,7 +43,7 @@ public class Tracker {
         boolean rsl = index != -1;
         if (rsl) {
             item.setId(id);
-            items.get(index) = item;
+            items.set(index, item);
 
         } return index != - 1;
     }
@@ -63,9 +63,7 @@ public class Tracker {
         int index = indexOf(id);
         boolean rsl = index != -1;
         if (rsl) {
-            System.arraycopy(items, index + 1, items, index, this.size - index);
-            items.get(size - 1) = null;
-            this.size--;
+            items.remove(index);
         }
         return rsl;
     }
