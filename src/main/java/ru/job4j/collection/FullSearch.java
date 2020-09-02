@@ -6,11 +6,11 @@ import java.util.List;
 
 public class FullSearch {
     public static HashSet<String> extractNumber(List<Task> list) {
-        HashSet<String> numbers = new HashSet<>();
-        for () {
+        HashSet<String> numbers = new HashSet<String>();
+        for (String num : numbers) {
 
-            return numbers;
         }
+        return numbers;
     }
 
 }
