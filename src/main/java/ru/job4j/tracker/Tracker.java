@@ -17,20 +17,19 @@ public class Tracker {
     }
 
     public List<Item> findAll() {
-        List<Item> itemsWithoutNull = Arrays.copyOf(items, this.size);
-        return itemsWithoutNull;
+        return items;
     }
 
     public List<Item> findByName(String key) {
-        List<Item> itemsName = new Item[this.size];
+        List<Item> itemsName = new ArrayList<>();
         int size = 0;
-        for (int i = 0; i < this.size; i++) {
+        for (int i = 0; i < items.size(); i++) {
         if (items.get(i).getName().equals(key)); {
-                itemsName[size] = items.get(i);
+                itemsName.add(size, items.get(i));
                 size++;
             }
         }
-        return Arrays.copyOf(itemsName, size);
+        return itemsName;
     }
 
     public Item findById(int id) {
@@ -50,7 +49,7 @@ public class Tracker {
 
     private int indexOf(int id) {
         int rsl = -1;
-        for (int index = 0; index < this.size; index++) {
+        for (int index = 0; index < items.size(); index++) {
             if (items.get(index).getId() == id) {
                 rsl = index;
                 break;

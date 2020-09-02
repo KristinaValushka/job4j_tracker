@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.List;
+
 public class StartUI {
 
     public static void createItem(Input input, Tracker tracker) {
@@ -10,9 +12,9 @@ public class StartUI {
     }
     public static void searchAll(Tracker tracker) {
         System.out.println("=== All item ===");
-        Item[] foundAll = tracker.findAll();
-        for (int i = 0; i < foundAll.length; i++) {
-            System.out.println(foundAll[i]);
+        List<Item> foundAll = tracker.findAll();
+        for (int i = 0; i < foundAll.size(); i++) {
+            System.out.println(foundAll.get(i));
         }
     }
     public static void replaceItem(Input input, Tracker tracker) {
@@ -50,10 +52,10 @@ public class StartUI {
     public static void findByName(Input input, Tracker tracker) {
         System.out.println("=== Found item by name");
         String key = input.askStr("Enter key: ");
-        Item[] foundName = tracker.findByName(key);
-        if(foundName.length > 0) {
-            for (int i = 0; i < foundName.length; i++) {
-                System.out.println("Операция выполнена успешно " + foundName[i] + "найденное имя");
+        List<Item> foundName = tracker.findByName(key);
+        if(foundName.size() > 0) {
+            for (int i = 0; i < foundName.size(); i++) {
+                System.out.println("Операция выполнена успешно " + foundName.get(i) + "найденное имя");
             }
         } else {
             System.out.println("Не удалось найти существующую заявку");
@@ -66,24 +68,24 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker, UserAction[] actions) {
+    public void init(Input input, Tracker tracker, List<Item> actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
-            if (select < 0 || select >= actions.length) {
+            if (select < 0 || select >= actions.size()) {
                 out.println("Wrong input, you can select: 0, 1, 2, 3, 4, 5 or 6 " + (actions.length - 1));
                 continue;
             }
-            UserAction action = actions[select];
+            Item action = actions.get(select);
             run = action.execute(input, tracker);
         }
     }
 
-    private void showMenu(UserAction[] actions) {
+    private void showMenu(List<Item> actions) {
         out.println("Menu.");
-        for (int index = 0; index < actions.length; index++) {
-            out.println(index + ". " + actions[index].name());
+        for (int index = 0; index < actions.size(); index++) {
+            out.println(index + ". " + actions.get(index).name());
         }
     }
 
