@@ -68,7 +68,7 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker, List<Item> actions) {
+    public void init(Input input, Tracker tracker, List<UserAction> actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
@@ -77,15 +77,15 @@ public class StartUI {
                 out.println("Wrong input, you can select: 0, 1, 2, 3, 4, 5 or 6 " + (actions.size() - 1));
                 continue;
             }
-            Item action = actions.get(select);
-            //run = action.execute(input, tracker);
+            UserAction action = actions.get(select);
+            run = action.execute(input, tracker);
         }
     }
 
-    private void showMenu(List<Item> actions) {
+    private void showMenu(List<UserAction> actions) {
         out.println("Menu.");
         for (int index = 0; index < actions.size(); index++) {
-       //     out.println(index + ". " + actions.get(index).name());
+            out.println(index + ". " + actions.get(index).name());
         }
     }
 
@@ -93,7 +93,7 @@ public class StartUI {
         Output output = new ConsoleOutput();
         Input input = new ValidateInput(output, new ConsoleInput());
         Tracker tracker = new Tracker();
-        UserAction[] actions = {
+        List<UserAction> actions = {
                 new CreateAction(output),
                 new SearchAllAction(output),
                 new ReplaceAction(output),
@@ -102,7 +102,7 @@ public class StartUI {
                 new FindByNameAction(output),
                 new ExitAction(output)
         };
-      //  new StartUI(output).init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, actions);
         }
     }
 

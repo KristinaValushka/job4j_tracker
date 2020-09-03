@@ -22,11 +22,9 @@ public class Tracker {
 
     public List<Item> findByName(String key) {
         List<Item> itemsName = new ArrayList<>();
-        int size = 0;
         for (int i = 0; i < items.size(); i++) {
         if (items.get(i).getName().equals(key)); {
-                itemsName.add(size, items.get(i));
-                size++;
+                itemsName.add(items.get(i));
             }
         }
         return itemsName;
@@ -43,7 +41,6 @@ public class Tracker {
         if (rsl) {
             item.setId(id);
             items.set(index, item);
-
         } return index != - 1;
     }
 
@@ -76,5 +73,4 @@ public class Tracker {
         Item bugWithDesc = new Item();
         bugWithDesc.setName("Bug with description");
     }
-
 }

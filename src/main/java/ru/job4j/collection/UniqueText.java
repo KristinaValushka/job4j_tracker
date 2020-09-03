@@ -1,4 +1,4 @@
-/*package ru.job4j.collection;
+package ru.job4j.collection;
 
 import java.util.HashSet;
 
@@ -19,4 +19,4 @@ public class UniqueText {
         }
            return rsl;
     }
-}*/
+}
