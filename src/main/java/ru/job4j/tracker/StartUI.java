@@ -74,18 +74,18 @@ public class StartUI {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
             if (select < 0 || select >= actions.size()) {
-                out.println("Wrong input, you can select: 0, 1, 2, 3, 4, 5 or 6 " + (actions.length - 1));
+                out.println("Wrong input, you can select: 0, 1, 2, 3, 4, 5 or 6 " + (actions.size() - 1));
                 continue;
             }
             Item action = actions.get(select);
-            run = action.execute(input, tracker);
+            //run = action.execute(input, tracker);
         }
     }
 
     private void showMenu(List<Item> actions) {
         out.println("Menu.");
         for (int index = 0; index < actions.size(); index++) {
-            out.println(index + ". " + actions.get(index).name());
+       //     out.println(index + ". " + actions.get(index).name());
         }
     }
 
@@ -102,7 +102,7 @@ public class StartUI {
                 new FindByNameAction(output),
                 new ExitAction(output)
         };
-        new StartUI(output).init(input, tracker, actions);
+      //  new StartUI(output).init(input, tracker, actions);
         }
     }
 
